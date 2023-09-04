@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: spring_mysql
+    environment:
+      #MYSQL_ROOT_PASSWORDがないとエラーになる
+      MYSQL_ROOT_PASSWORD: spring_root
+      MYSQL_DATABASE: spring_databese
+      MYSQL_USER: spring_user
+      MYSQL_PASSWORD: spring_password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
