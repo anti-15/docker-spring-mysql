@@ -5,8 +5,9 @@ services:
     container_name: spring_mysql
     environment:
       #MYSQL_ROOT_PASSWORDがないとエラーになる
+      #mysqlにアクセスするときはこっちのパスワード使う
       MYSQL_ROOT_PASSWORD: spring_root
-      MYSQL_DATABASE: spring_databese
+      MYSQL_DATABASE: spring_database
       MYSQL_USER: spring_user
       MYSQL_PASSWORD: spring_password
       TZ: 'Asia/Tokyo'
@@ -16,3 +17,4 @@ services:
       - ./db/init:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
+#mysql -u root -p mysqlログインコマンド
